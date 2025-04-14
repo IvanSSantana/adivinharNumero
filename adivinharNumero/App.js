@@ -24,15 +24,16 @@ export default function App() {
           setMessage('Estorou o limite!')
           setTry(null)
           setGameOver(true)
-        }
-        if (number > randomNumber) {
-          setMessage('Tente um número menor.')
         } else {
-          setMessage('Tente um número maior.')
+            if (number > randomNumber) {
+              setMessage('Tente um número menor.')
+            } else {
+            setMessage('Tente um número maior.')
+            }
         }
       } else {
         setMessage('Parabéns! Você acertou!')
-        setTry(0)
+        setTry(null)
         setGameOver(true)
       }
     }
@@ -44,7 +45,7 @@ export default function App() {
       </View>
 
       <View style={styles.inputArea}>
-        <TextInput style={styles.input} placeholder={'Digite um número...'} keyboardType={'numeric'} onChangeText={setNumber} />
+        <TextInput style={styles.input} placeholder={'Digite um número (entre 0 e 100)...'} keyboardType={'numeric'} onChangeText={setNumber} />
 
         <TouchableOpacity style={styles.button} onPress={verify}>
           <Text style={styles.textButton}>Verificar</Text>
@@ -113,10 +114,10 @@ const styles = StyleSheet.create({
   },
   triesText: {
     fontSize: 25,
-    fontWeight: 300
+    fontWeight: '700'
   },
   outputText: {
     fontSize: 17,
-    fontWeight: 300
+    fontWeight: '700'
   }
 });
